@@ -1,15 +1,16 @@
 # Bot.py
 # Ashish D'Souza
-# September 6th, 2018
+# September 8th, 2018
 
 from selenium import webdriver
 from time import sleep
 import Git
 from Encryption import *
+import os
 
 
 def read():
-    with open("/root/Documents/git/rocket-league-bot/settings.txt", "r") as file:
+    with open(os.getcwd().split("/win")[0] + "/settings.txt", "r") as file:
         lines = file.readlines()
         file.close()
     lines = list(map(lambda x: decrypt(x, "Ljezzy00Ljezzy00"), lines))
@@ -30,7 +31,7 @@ def read():
 delay, emails, passwords = read()
 
 while True:
-    repository_name = "/root/Documents/git/rocket-league-bot"
+    repository_name = os.getcwd().split("/win")[0]
     Git.fetch(repository_name)
     if not Git.is_up_to_date(repository_name):
         Git.pull(repository_name)
@@ -38,7 +39,7 @@ while True:
     for account in range(len(emails)):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--disable-infobar")
-        # chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless")
         browser = webdriver.Chrome(chrome_options=chrome_options)
         browser.get("https://rocket-league.com")
         sleep(1)
