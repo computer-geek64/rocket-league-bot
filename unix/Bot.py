@@ -1,12 +1,11 @@
 # Bot.py
 # Ashish D'Souza
-# September 8th, 2018
+# September 9th, 2018
 
 from selenium import webdriver
 from time import sleep
 import Git
 from Encryption import *
-from selenium.webdriver.firefox.options import Options
 import os
 
 
@@ -37,16 +36,18 @@ while True:
         Git.pull(repository_name)
         delay, emails, passwords = read()
     for account in range(len(emails)):
-        firefox_options = Options()
-        firefox_options.add_argument("--headless")
-        browser = webdriver.Firefox(firefox_options=firefox_options)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-infobars")
+        chrome_options.add_argument("--headless")
+        browser = webdriver.Chrome(chrome_options=chrome_options)
         browser.get("https://rocket-league.com")
         sleep(1)
-        browser.execute_script("document.getElementById('acceptPrivacyPolicy').click()")
+        browser.find_element_by_id("acceptPrivacyPolicy").click()
         sleep(1)
-        browser.execute_script("document.getElementsByName('email')[0].value='" + emails[account] + "'")
-        browser.execute_script("document.getElementsByName('password')[0].value='" + passwords[account] + "'")
-        browser.execute_script("document.getElementsByName('submit')[0].click()")
+        browser.find_element_by_name("email").send_keys(emails[account])
+        browser.find_element_by_name("password").send_keys(passwords[account])
+        browser.find_element_by_name("submit").click()
         sleep(1)
         username = browser.find_element_by_css_selector("a[href^=\"/trades/\"").get_attribute("href").split("/")[-1]
         browser.get("https://rocket-league.com/trades/" + username)
