@@ -9,7 +9,7 @@ from Encryption import *
 
 
 def read():
-    with open("/root/Documents/git/rocket-league-bot/settings.txt", "r") as file:
+    with open("/root/PycharmProjects/RocketLeague/git/rocket-league-bot/settings.txt", "r") as file:
         lines = file.readlines()
         file.close()
     lines = list(map(lambda x: decrypt(x, "Ljezzy00Ljezzy00"), lines))
@@ -30,7 +30,7 @@ def read():
 delay, emails, passwords = read()
 
 while True:
-    repository_name = "/root/Documents/git/rocket-league-bot"
+    repository_name = "/root/PycharmProjects/RocketLeague/git/rocket-league-bot"
     Git.fetch(repository_name)
     if not Git.is_up_to_date(repository_name):
         Git.pull(repository_name)
