@@ -1,11 +1,12 @@
 # Bot.py
 # Ashish D'Souza
-# September 6th, 2018
+# September 8th, 2018
 
 from selenium import webdriver
 from time import sleep
 import Git
 from Encryption import *
+from selenium.webdriver.firefox.options import Options
 
 
 def read():
@@ -36,10 +37,9 @@ while True:
         Git.pull(repository_name)
         delay, emails, passwords = read()
     for account in range(len(emails)):
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--disable-infobar")
-        # chrome_options.add_argument("--headless")
-        browser = webdriver.Chrome(chrome_options=chrome_options)
+        firefox_options = Options()
+        firefox_options.add_argument("--headless")
+        browser = webdriver.Firefox(firefox_options=firefox_options)
         browser.get("https://rocket-league.com")
         sleep(1)
         browser.execute_script("document.getElementById('acceptPrivacyPolicy').click()")
