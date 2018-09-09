@@ -7,7 +7,7 @@ import os
 
 
 while True:
+    sleep(15 * 60)
     os.system("killall chromedriver")
     os.system("killall chrome")
     os.system("python3 Bot.py")
-    sleep(15 * 60)
