@@ -15,7 +15,6 @@ def read():
         lines = file.readlines()
         file.close()
     lines = list(map(lambda x: decrypt(x, password), lines))
-    print(lines)
     return int(lines[0].strip())
 
 
