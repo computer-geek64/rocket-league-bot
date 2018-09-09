@@ -3,7 +3,6 @@
 # September 8th, 2018
 
 import git
-import os
 
 
 def fetch(repository_name):
