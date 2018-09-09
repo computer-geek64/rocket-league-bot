@@ -15,4 +15,4 @@ def encrypt(text, passphrase):
 def decrypt(cipher_text, passphrase):
     IV = "1234567890123456"
     aes = AES.new(str.encode(passphrase), AES.MODE_CFB, str.encode(IV))
-return aes.decrypt(base64.b64decode(cipher_text)).decode("ascii")
+    return aes.decrypt(base64.b64decode(cipher_text)).decode("ascii")
