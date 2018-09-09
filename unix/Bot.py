@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.options import Options
 import os
 
 
-password = open(os.getcwd().split("/unix")[0] + "/password.txt", "r").readlines()[0].strip()
+password = ((open(os.getcwd().split("/unix")[0] + "/password.txt", "r").readlines()[0].strip()) * 16)[:16]
 
 
 def read():
