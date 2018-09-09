@@ -25,9 +25,6 @@ def read():
             passwords.append(accounts[i].strip().split(":")[1])
     return [delay, emails, passwords]
 
-
-# emails = ["Loganhewett00@yahoo.com", "Npj99428@sawoe.com"]
-# passwords = ["Ljezzy00", "Ljezzy00"]
 delay, emails, passwords = read()
 
 while True:
