@@ -7,6 +7,6 @@ Bot for posting on a Rocket League trading website.
   * Selenium webdriver
   * Pycryptodome
   * Gitpython
-  * Git
+* Git
 * Google Chrome
 * Chromedriver
