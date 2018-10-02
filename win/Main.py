@@ -7,7 +7,11 @@ import os
 
 
 while True:
+    print("[-] Resetting")
     sleep(15 * 60)
+    print("[+] Successfully reset.")
+    print("[-] Starting bot...")
     os.system("taskkill /IM chrome.exe /F")
     os.system("taskkill /IM chromedriver.exe /F")
     os.system("python Bot.py")
+    print("[!] An error occurred.")
