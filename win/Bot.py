@@ -9,11 +9,11 @@ from Encryption import *
 import os
 
 
-password = ((open(os.getcwd().split("/win")[0] + "/password.txt", "r").readlines()[0].strip()) * 16)[:16]
+password = ((open(os.getcwd().split("win")[0] + "password.txt", "r").readlines()[0].strip()) * 16)[:16]
 
 
 def read():
-    with open(os.getcwd().split("/win")[0] + "/settings.txt", "r") as file:
+    with open(os.getcwd().split("win")[0] + "settings.txt", "r") as file:
         lines = file.readlines()
         file.close()
     lines = list(map(lambda x: decrypt(x, password), lines))
@@ -30,7 +30,7 @@ def read():
 delay, emails, passwords = read()
 
 while True:
-    repository_name = os.getcwd().split("/win")[0]
+    repository_name = os.getcwd().split("win")[0]
     Git.fetch(repository_name)
     if not Git.is_up_to_date(repository_name):
         Git.pull(repository_name)
